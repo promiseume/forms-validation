@@ -20,13 +20,13 @@ export default function Form() {
     setError(validate(form));
     setSubmit(true);
     if (Object.keys(error).length === 0 && isSubmit) {
-      navigate("/chat");
     } else {
       setIsValid(true);
     }
   };
   useEffect(() => {
     if (Object.keys(error).length === 0 && isSubmit) {
+      navigate("/chat");
     }
   }, [error]);
 
@@ -92,3 +92,4 @@ export default function Form() {
     </div>
   );
 }
+
