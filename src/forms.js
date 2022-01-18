@@ -7,7 +7,8 @@ export default function Form() {
   const [form, setForm] = useState(initialValue);
   const [error, setError] = useState({});
   const [isSubmit, setSubmit] = useState(false);
-  let navigate 
+  const [isValid, setIsValid] = useState(false);
+  let navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,11 +19,11 @@ export default function Form() {
     e.preventDefault();
     setError(validate(form));
     setSubmit(true);
-    {Object.keys(error).length === 0 && isSubmit ? (
-      <Link to="/chat" />
-    ) : (
-      <div className="invalid">Login</div>
-    )}
+    if (Object.keys(error).length === 0 && isSubmit) {
+      navigate("/chat");
+    } else {
+      setIsValid(true);
+    }
   };
   useEffect(() => {
     if (Object.keys(error).length === 0 && isSubmit) {
@@ -86,7 +87,7 @@ export default function Form() {
             onChange={handleChange}
           />
         </div>
-        <button>Submit</button>
+        <button type="submit">Submit</button>
       </form>
     </div>
   );
