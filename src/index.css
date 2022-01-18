@@ -69,7 +69,9 @@ p{
   outline: none;
   font-size: 20px;
 }
-
+.chat-text {
+  word-wrap: break-word;
+}
 .chat-text h3{
   padding: 13px;
   background-color:rgb(241, 241, 248) ;
